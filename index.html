@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김성령 — Backend Developer Portfolio</title>
+<meta name="description" content="Java/Spring 백엔드 개발자 김성령의 포트폴리오.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --paper:#f7f5f0;--paper-2:#fff;--ink:#16181d;--ink-2:#4a4f5a;--ink-3:#8a8f9a;--line:#e3dfd5;
+  --accent:#1f4bff;--accent-soft:#e9eeff;--mark:#fff2a8;--mark-ink:#5a4a00;--warn:#d9480f;
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
+  --sans:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --radius:14px;--maxw:1040px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;line-height:1.25;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding-left:1.1em}
+li{margin:.22em 0}
+code,.mono{font-family:var(--mono);font-size:.86em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.muted{color:var(--ink-3)}
+.sub{color:var(--ink-2)}
+.ask{background:var(--mark);color:var(--mark-ink);padding:0 .25em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.todo{color:var(--warn);font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:.35em;padding:.2em .6em;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--line);background:var(--paper-2);color:var(--ink-2);white-space:nowrap}
+.badge.award{background:#fff7e0;border-color:#f3dc8f;color:#7a5a00}
+.badge.role{background:var(--accent-soft);border-color:#c9d4ff;color:#1a3bd1}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.nav .brand{font-weight:800}
+.nav .brand span{color:var(--accent)}
+.nav ul{display:flex;gap:4px;list-style:none;padding:0;margin:0}
+.nav li a{display:block;padding:6px 10px;border-radius:8px;font-size:13px;color:var(--ink-2);font-weight:600}
+.nav li a:hover{background:var(--paper-2);color:var(--ink)}
+.nav .print{border:1px solid var(--line);background:var(--paper-2);border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* hero */
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero .grid{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:start}
+.photo{width:200px;aspect-ratio:3/4;border-radius:18px;border:1px solid var(--line);background:repeating-linear-gradient(45deg,#f1eee6 0 10px,#f7f5f0 10px 20px);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ink-3);font-size:13px;line-height:1.5;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;font-weight:700}
+.hero h1{font-size:44px;font-weight:900;letter-spacing:-.03em;margin:8px 0 6px}
+.hero h1 small{font-size:18px;font-weight:600;color:var(--ink-3);letter-spacing:0;margin-left:10px}
+.hero .tagline{font-size:20px;font-weight:700;margin:10px 0 16px}
+.hero .tagline em{font-style:normal;color:var(--accent)}
+.hero .lead{color:var(--ink-2);max-width:56ch}
+.info{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 28px;margin-top:18px;font-size:14px}
+.info div{display:grid;grid-template-columns:72px 1fr;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.info b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;padding-top:4px}
+
+/* sections */
+section.block{padding:52px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+.sec-head .num{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:13px}
+.sec-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.sec-head p{color:var(--ink-3);font-size:13.5px;margin-left:auto}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.card h3{font-size:12px;font-family:var(--mono);letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.card .big{font-size:18px;font-weight:800;margin-bottom:6px}
+.card p{font-size:14px;color:var(--ink-2)}
+
+/* skills */
+.skillbox{padding:10px 26px}
+.srow{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start;padding:16px 0;border-bottom:1px dashed var(--line)}
+.srow:last-child{border-bottom:0}
+.scat{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding-top:4px}
+.sico{width:34px;height:34px;border-radius:9px;background:var(--paper);display:inline-flex;align-items:center;justify-content:center;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{--c:#555;background:var(--c);color:#fff;font-weight:700;font-size:14px;padding:6px 14px 6px 10px;border-radius:9px;line-height:1.3;display:inline-flex;align-items:center;gap:7px}
+.chips span img{width:16px;height:16px;object-fit:contain;background:#fff;border-radius:4px;padding:1px}
+.chips span.dim{opacity:.38}
+
+/* projects */
+.project{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:30px 34px;margin-bottom:24px;position:relative;overflow:hidden}
+.project::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--pc,var(--accent))}
+.project.p1{--pc:#1f4bff}.project.p2{--pc:#ff5a1f}.project.p3{--pc:#0f8a5f}.project.p4{--pc:#9b3dff}
+.project.sub{padding:22px 24px;border-radius:16px;margin-bottom:0}
+.p-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--pc);text-transform:uppercase;font-weight:700}
+.p-head h3{font-size:26px;font-weight:900;letter-spacing:-.02em;margin:6px 0 4px}
+.p-head h3 small{font-size:14px;font-weight:600;color:var(--ink-3);margin-left:8px;letter-spacing:0}
+.p-head .one{font-size:15.5px;color:var(--ink-2);max-width:64ch}
+.p-head .badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:280px}
+.scale{display:flex;flex-wrap:wrap;gap:6px 22px;padding:10px 16px;background:var(--paper);border-radius:10px;margin:14px 0 18px;font-size:13.5px}
+.scale span b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;margin-right:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.shot{border:2px dashed #cfc9bb;border-radius:12px;min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px;text-align:center;background:repeating-linear-gradient(45deg,#f3f0e8 0 10px,#faf8f3 10px 20px);padding:16px}
+.shot.real{border:1px solid var(--line);background:#eee;padding:0;overflow:hidden;min-height:0;display:block}
+.shot.real img{width:100%;height:230px;object-fit:cover;object-position:top}
+.cap{font-size:12px;color:var(--ink-3);margin-top:6px}
+.h4{font-size:11.5px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.did li{font-size:14px;color:var(--ink-2)}
+.did li b{color:var(--ink)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;margin-top:14px}
+.stack span{font-family:var(--mono);font-size:11.5px;padding:3px 8px;line-height:1.5;height:fit-content;border-radius:6px;background:var(--paper);border:1px solid var(--line);color:var(--ink-2)}
+.hot{margin-top:16px;border:1px solid #efdc8a;background:#fffbe6;border-radius:12px;padding:14px 16px}
+.hot h5{font-size:14.5px;font-weight:800;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.hot h5 .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:2px 6px;border-radius:4px;background:#b8860b;color:#fff}
+.hot p,.hot li{font-size:13.5px;color:var(--ink-2)}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:8px;font-size:13px}
+.ba .b,.ba .a{padding:7px 10px;border-radius:8px;background:var(--paper-2);border:1px solid var(--line)}
+.ba .a{border-color:#b7e4cf;background:#f0faf5}
+.ba .arrow{color:var(--ink-3);font-family:var(--mono)}
+.ba b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);margin-bottom:2px}
+.result{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.result .r{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.result .r b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em;color:var(--pc)}
+.result .r span{font-size:12.5px;color:var(--ink-2)}
+.links{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--paper);font-weight:700}
+tr:last-child td{border-bottom:0}
+td.d{font-family:var(--mono);font-size:12.5px;white-space:nowrap;color:var(--ink-2)}
+
+/* career */
+.career{display:grid;grid-template-columns:220px 1fr;gap:24px}
+.career .meta b{display:block;font-size:17px;font-weight:800}
+.career .meta span{display:block;color:var(--ink-2);font-size:13.5px}
+.career .meta .d{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:4px}
+
+footer{padding:36px 0 60px;color:var(--ink-3);font-size:12.5px}
+footer .links{display:grid;gap:4px}
+
+@media (max-width:860px){
+  .hero .grid,.about,.skillgrid,.two,.three,.result,.career,.info{grid-template-columns:1fr}
+  .photo{width:160px}.hero h1{font-size:34px}
+  .project{padding:22px 18px}.p-head{grid-template-columns:1fr}.p-head .badges{justify-content:flex-start;max-width:none}
+  .nav ul{display:none}
+}
+@page{size:A4;margin:12mm}
+@media print{
+  :root{--paper:#fff}
+  body{font-size:11.5px;background:#fff}
+  .nav{display:none}.wrap{max-width:none;padding:0}
+  .hero{padding:8mm 0 6mm}section.block{padding:7mm 0;border-bottom:0}
+  .project{break-before:page;border-radius:10px;margin-bottom:5mm;padding:7mm 7mm}
+  .project.sub{break-before:auto;break-inside:avoid}
+  .card,.skill,.hot,table,tr{break-inside:avoid}
+  .shot.real img{height:190px}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero .grid{grid-template-columns:150px 1fr;gap:24px}.photo{width:150px}.hero h1{font-size:34px}
+  .about{grid-template-columns:1fr 1fr 1fr}.skillgrid,.two,.career,.info{grid-template-columns:1fr 1fr}
+  .three,.result{grid-template-columns:1fr 1fr 1fr}
+  .p-head{grid-template-columns:1fr auto}.p-head .badges{justify-content:flex-end;max-width:280px}
+  #subprojects{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">김성령<span>.</span>dev</a>
+    <ul>
+      <li><a href="#skills">기술</a></li><li><a href="#projects">프로젝트</a></li><li><a href="#career">경력</a></li><li><a href="#awards">수상·자격</a></li>
+    </ul>
+    <button class="print" onclick="window.print()">PDF로 저장</button>
+  </div>
+</nav>
+
+<!-- ───────── HERO ───────── -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <!-- 사진: assets/photo.jpg 넣고 아래 주석 해제 (3:4) -->
+      <div class="photo"><img src="assets/photo.jpg" alt="김성령"></div>
+      <div>
+        <div class="eyebrow">Backend Developer · Java / Spring</div>
+        <h1>김성령 <small>Kim Seongryeong</small></h1>
+        <div class="info">
+          <div><b>Birth</b><span>2001.07.10</span></div>
+          <div><b>Email</b><span class="mono">qksrurwnsql@gmail.com</span></div>
+          <div><b>Phone</b><span class="mono">010-3177-1586</span></div>
+          <div><b>GitHub</b><span class="mono">https://github.com/MTsauRus</span></div>
+          <div><b>학력</b><span>서울시립대학교 컴퓨터과학부 (2020.03 – 2025.02)</span></div>
+          <div><b>교육</b><span>삼성청년SW·AI아카데미 15기 (2026.01 – 2026.12)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ───────── SKILLS ───────── -->
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>기술 스택</h2></div>
+    <div class="card skillbox">
+      <div class="srow"><div class="scat"><span class="sico">💻</span>Language</div><div class="chips"><span style="--c:#b8432f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" onerror="this.remove()">Java</span><span style="--c:#3b6fa0"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="" onerror="this.remove()">Python</span><span style="--c:#4b6a8a">SQL</span><span class="dim" style="--c:#c9b22a"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" onerror="this.remove()">JavaScript</span><span class="dim" style="--c:#3c3c3c"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/solidity/solidity-original.svg" alt="" onerror="this.remove()">Solidity</span></div></div>
+      <div class="srow"><div class="scat"><span class="sico">🗄️</span>Backend</div><div class="chips"><span style="--c:#6aa84f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/spring/spring-original.svg" alt="" onerror="this.remove()">Spring</span><span style="--c:#8e6f3e">JPA</span><span class="dim" style="--c:#b35a2a">MyBatis</span><span style="--c:#355c9b">STOMP WebSocket</span><span style="--c:#2d7fb8">WebRTC · LiveKit</span><span style="--c:#2f8f7a">Spring AI</span></div></div>
+      <div class="srow"><div class="scat"><span class="sico">🧱</span>Database</div><div class="chips"><span style="--c:#2f6f9a"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="" onerror="this.remove()">MySQL</span><span style="--c:#d04a3a"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/redis/redis-original.svg" alt="" onerror="this.remove()">Redis</span><span class="dim" style="--c:#3a6f6a"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mariadb/mariadb-original.svg" alt="" onerror="this.remove()">MariaDB</span><span class="dim" style="--c:#2f5c8f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" onerror="this.remove()">PostgreSQL</span><span class="dim" style="--c:#c0392b"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/oracle/oracle-original.svg" alt="" onerror="this.remove()">Oracle</span></div></div>
+      <div class="srow"><div class="scat"><span class="sico">☁️</span>DevOps</div><div class="chips"><span style="--c:#e2492f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" onerror="this.remove()">Git</span><span style="--c:#2a63d6"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/jira/jira-original.svg" alt="" onerror="this.remove()">Jira</span><span class="dim" style="--c:#3b7ddd"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg" alt="" onerror="this.remove()">Docker</span><span class="dim" style="--c:#2d8a4e"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nginx/nginx-original.svg" alt="" onerror="this.remove()">nginx</span><span class="dim" style="--c:#e05a2b"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/prometheus/prometheus-original.svg" alt="" onerror="this.remove()">Prometheus</span><span class="dim" style="--c:#f08a24"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/grafana/grafana-original.svg" alt="" onerror="this.remove()">Grafana</span><span class="dim" style="--c:#e2492f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/gitlab/gitlab-original.svg" alt="" onerror="this.remove()">GitLab CI</span></div></div>
+      <div class="srow"><div class="scat"><span class="sico">🖥️</span>Frontend</div><div class="chips"><span class="dim" style="--c:#3fb27f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vuejs/vuejs-original.svg" alt="" onerror="this.remove()">Vue</span><span class="dim" style="--c:#ff5a1f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/svelte/svelte-original.svg" alt="" onerror="this.remove()">Svelte</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PROJECTS ───────── -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>프로젝트</h2><p>최신순</p></div>
+
+    <!-- 1. Antenna -->
+    <article class="project p1" id="antenna">
+      <div class="p-head">
+        <div>
+          <div class="kicker">01 · Blockchain</div>
+          <h3>Antenna</h3>
+          <p class="one">주식 예측을 등록 시점에 봉인하고 블록체인에 기록해, 나중에 아무도 고칠 수 없게 만든 예측 플랫폼</p>
+        </div>
+        <div class="badges"><span class="badge award">🏆 SSAFY 특화 프로젝트 우수상</span></div>
+      </div>
+      <div class="scale"><span><b>기간</b>2026.08.17 – 09.30 (6주)</span><span><b>인원</b>6명</span><span><b>역할</b>백엔드 · 블록체인</span></div>
+      <div class="two">
+        <div><div class="shot real"><img src="assets/antenna.webp" alt="Antenna"></div></div>
+        <div>
+          <div class="h4">내가 한 일</div>
+          <ul class="did">
+            <li>Spring Boot 기반 백엔드 구현</li>
+            <li>Solidity로 컨트랙트 3종 작성 및 배포</li>
+            <li>ANT 토큰 설계 및 구현</li>
+            <li>DB – 체인 간 싱크를 맞추는 릴레이어·인덱서 구현</li>
+          </ul>
+          <div class="stack"><span>Java 21</span><span>Spring Boot</span><span>Web3j</span><span>PostgreSQL</span><span>Redis</span><span>Solidity</span><span>Hardhat</span></div>
+        </div>
+      </div>
+      <div class="hot">
+        <h5>핵심 설계 — 근거 해시(noteHash)를 salt로 겸하기</h5>
+        <p>예측은 경우의 수가 적어 해시만 공개돼도 내용을 맞출 수 있습니다. 그래서 난수를 섞어야 하는데, 원안은 서버 난수와 근거용 난수 두 장이었습니다. 근거 해시에 이미 난수가 들어 있으니 바깥 해시의 난수 역할도 겸할 수 있다고 보고 서버 난수를 없앴습니다.</p>
+        <div class="ba"><div class="b"><b>Before</b>서버가 난수를 만들어 보관 · 유출·바꿔치기 걱정</div><div class="arrow">→</div><div class="a"><b>After</b>서버가 숨길 비밀 없음 · 비구독자는 포함 여부만, 구독자는 내용까지 검증</div></div>
+      </div>
+      <div class="hot" style="background:var(--paper);border-color:var(--line)">
+        <h5>트러블슈팅 — 체인에 이미 있는 번호를 성공으로 처리하던 버그</h5>
+        <p>재전송 규칙을 새 기록에도 적용해, 남이 올린 기록을 우리 것으로 확정할 수 있었습니다. 체인에 기록된 값과 우리 값을 대조해 다르면 실패로 처리하도록 고쳤습니다.</p>
+      </div>
+</article>
+
+    <!-- 2. MoToK -->
+    <article class="project p2" id="motok">
+      <div class="p-head">
+        <div>
+          <div class="kicker">02 · Realtime</div>
+          <h3>MoToK <small>MotionTok</small></h3>
+          <p class="one">웹캠으로 몸동작을 인식해 최대 8명이 화상으로 함께 노는 실시간 멀티플레이 게임</p>
+        </div>
+        <div class="badges"><span class="badge award">🏆 SSAFY 공통 프로젝트 우수상</span></div>
+      </div>
+      <div class="scale"><span><b>기간</b>2026.07.06 – 08.10 (6주)</span><span><b>인원</b>6명</span><span><b>역할</b>백엔드 · 실시간 통신</span></div>
+      <div class="two">
+        <div><div class="shot real"><img src="assets/motok.png" alt="MoToK"></div></div>
+        <div>
+          <div class="h4">내가 한 일</div>
+          <ul class="did">
+            <li>WebRTC 화상 통화, STOMP 채팅·로비 등 실시간 통신 구현</li>
+            <li>로비 폴링을 소켓 푸시 방식으로 전환</li>
+            <li>JWT 인증·관리자 권한 처리, 중복 로그인 차단</li>
+            <li>Prometheus·Grafana 관측 환경 구축 및 k6 부하테스트</li>
+          </ul>
+          <div class="stack"><span>Java 21</span><span>Spring Boot</span><span>STOMP</span><span>WebRTC · LiveKit</span><span>Redis</span><span>MySQL</span><span>JWT</span><span>Docker</span><span>Prometheus · Grafana</span><span>k6</span></div>
+        </div>
+      </div>
+      <div class="hot">
+        <h5>핵심 설계 — 화상 엔진을 갈아끼울 수 있는 어댑터 구조</h5>
+        <p>서버는 입장 토큰만 발급하고 영상 중계는 엔진에 맡기도록 나눠, LiveKit·OpenVidu·자체 시그널링을 설정 하나로 바꿀 수 있게 했습니다. LiveKit을 고른 이유는 성능이 아니라, 기존 nginx와 포트가 충돌하지 않는 선택지였기 때문입니다.</p>
+      </div>
+      <div class="hot" style="background:var(--paper);border-color:var(--line)">
+        <h5>트러블슈팅 — 관리자 권한 판정을 DB 조회에서 토큰으로</h5>
+        <p>관리자 화면을 열 때마다 프론트가 서버에 사용자 정보를 물어 DB를 읽고 있었습니다. 토큰에 권한을 넣고 프론트는 토큰만 읽게 바꿔, 판정마다 생기던 요청과 DB 조회를 없앴습니다.</p>
+        <div class="ba"><div class="b"><b>Before</b>판정마다 요청 1회 · DB 조회 1회</div><div class="arrow">→</div><div class="a"><b>After</b>요청 0회 · DB 조회 0회</div></div>
+      </div>
+</article>
+
+    <!-- 3. 홈셜록 -->
+    <article class="project p3" id="homesherlock">
+      <div class="p-head">
+        <div>
+          <div class="kicker">03 · Data</div>
+          <h3>홈셜록 <small>HomeSherlock</small></h3>
+          <p class="one">공공데이터로 매물 주변 환경을 점수화하고, "병원까지 걸어서 몇 분"을 실제 보행 경로로 계산하는 주거지 추천 서비스</p>
+        </div>
+        <div class="badges"><span class="badge award">🏆 SSAFY 관통 프로젝트 최우수상</span></div>
+      </div>
+      <div class="scale"><span><b>기간</b>2026.06.01 – 06.26 (4주)</span><span><b>인원</b>2명</span><span><b>역할</b>백엔드 · 데이터</span></div>
+      <div class="two">
+        <div><div class="shot real"><img src="assets/homesherlock.webp" alt="홈셜록"></div></div>
+        <div>
+          <div class="h4">내가 한 일</div>
+          <ul class="did">
+            <li>공공데이터 30여 종 수집·적재 배치 파이프라인 구축</li>
+            <li>보행 그래프 기반 접근성 점수 엔진 설계 및 구현</li>
+            <li>의료·교통·생활·안전 4축 점수 체계와 해시태그 추천 설계</li>
+            <li>자연어 라이프스타일을 추천 가중치로 바꾸는 LLM 기능, AI 채팅 세션 구현</li>
+          </ul>
+          <div class="stack"><span>Java 21</span><span>Spring Boot</span><span>Spring Batch</span><span>MyBatis</span><span>MySQL</span><span>Spring AI</span><span>Vue 3</span><span>Kakao Map</span></div>
+        </div>
+      </div>
+      <div class="hot">
+        <h5>핵심 설계 — 4축 점수, 축마다 다른 계산</h5>
+        <div class="three">
+          <div><b>접근성</b> · 걸어서 도달하는 시설 수와 가장 가까운 시설까지의 시간</div>
+          <div><b>밀집도</b> · CCTV·비상벨처럼 주변에 깔려 있으면 되는 것은 반경 안 개수</div>
+          <div><b>가성비</b> · 최근 2년 실거래가 중앙값, 쌀수록 높은 점수</div>
+        </div>
+        <p style="margin-top:8px">시설은 "0개면 0점"이 맞지만 가격은 그런 기준이 없어 정규화 방식을 따로 두었고, 총점 대신 순위와 근거 지표만 보여줍니다.</p>
+      </div>
+      <div class="hot" style="background:var(--paper);border-color:var(--line)">
+        <h5>핵심 설계 — 무거운 계산은 미리, 요청 때는 읽기만</h5>
+        <ul>
+          <li>매물마다 경로를 계산하는 대신 시설 쪽에서 출발해 계산 횟수를 크게 줄임</li>
+          <li>30분 넘게 걸리는 곳은 탐색하지 않아 85만 노드 그래프에서도 빠르게 동작</li>
+          <li>결과를 배치로 저장해 두고, 추천 요청 때는 점수 합산만 수행</li>
+        </ul>
+      </div>
+</article>
+
+    <!-- 4. 빅데경 -->
+    <article class="project p4" id="bigdata">
+      <div class="p-head">
+        <div>
+          <div class="kicker">04 · Data Analysis</div>
+          <h3>절반의 서울 <small>어르신의 발걸음으로 그리는 서울의 경계</small></h3>
+          <p class="one">서울시 '도보 30분 생활권'이 어르신에게도 유효한지, 보행 네트워크 위에서 보행속도별로 다시 계산해 자치구 격차를 시각화</p>
+        </div>
+        <div class="badges"><span class="badge award">🏆 서울시 빅데이터 경진대회 우수상 (서울특별시장상)</span></div>
+      </div>
+      <div class="scale"><span><b>기간</b>2026.04.01 – 05.13 (6주)</span><span><b>인원</b>5명</span><span><b>역할</b>팀장 · 데이터 분석</span><span><b>배포</b><a href="https://seniorwalkseoul.site" target="_blank" rel="noopener" style="color:var(--pc);font-weight:700;text-decoration:underline">https://seniorwalkseoul.site</a></span></div>
+      <div class="two">
+        <div><div class="shot real"><img src="assets/bigdata_conclusion.webp" alt="절반의 서울"></div></div>
+        <div>
+          <div class="h4">내가 한 일</div>
+          <ul class="did">
+            <li>주제 기획, 팀 방법론 통합 및 일정 관리</li>
+            <li>서울 전역 보행 네트워크 기반 접근성 계산 엔진 설계·배포</li>
+            <li>기후안전 도메인 분석 및 대시보드 제작</li>
+            <li>5개 도메인 대시보드 통합 및 본선 발표</li>
+          </ul>
+          <div class="stack"><span>Python</span><span>osmnx</span><span>networkx</span><span>geopandas</span><span>NASA SRTM</span><span>SvelteKit</span><span>Leaflet</span></div>
+        </div>
+      </div>
+      <div class="hot">
+        <h5>핵심 설계 — 속도별로 12번 돌리던 경로 탐색을 1번으로</h5>
+        <p>어느 길이 가장 빠른지는 걷는 속도와 무관하다는 점을 이용해, 경사만 반영한 거리로 한 번만 탐색하고 보행속도 4종 × 기준시간 3종은 기준값 비교로 처리했습니다. 경사 보정도 같은 방식으로 켜고 끌 수 있습니다.</p>
+        <div class="ba"><div class="b"><b>Before</b>출발점마다 탐색 12회</div><div class="arrow">→</div><div class="a"><b>After</b>탐색 1회 + 기준값 비교</div></div>
+      </div>
+      <div class="hot" style="background:var(--paper);border-color:var(--line)">
+        <h5>핵심 설계 — 결빙 취약 지역, 면적이 아니라 길의 비율로</h5>
+        <p>제설함 반경 밖 면적으로 비교하면 한강·산이 그대로 잡혀 산 많은 구가 과대평가됩니다. 대신 제설함 반경 밖에 놓인 도로 지점의 비율로 바꿔 자치구를 순위화했습니다.</p>
+      </div>
+</article>
+
+    <!-- sub projects -->
+    <div class="three" id="subprojects">
+      <article class="project sub p1">
+        <div class="kicker">05 · 캡스톤</div>
+        <h3 style="font-size:20px;font-weight:900;margin:6px 0 4px">알려줘</h3>
+        <p class="sub" style="font-size:13px">노인이 복약·식사·혈당·혈압을 알람으로 기록하고 보호자가 원격으로 확인하는 앱</p>
+        <div class="scale" style="padding:8px 12px;margin:10px 0;font-size:12.5px"><span><b>기간</b>2024.09 – 12 · 4명</span><span><b>역할</b>백엔드</span></div>
+        <ul class="did" style="font-size:13px">
+          <li>Spring Boot 기반 백엔드 설계·구현·배포</li>
+          <li>노인·보호자 구분 JWT 인증과 권한 처리</li>
+          <li>혈압·혈당 기록 및 보호자용 리포트 API</li>
+        </ul>
+        <div class="stack" style="margin-top:10px"><span>Spring Boot</span><span>JPA</span><span>MariaDB</span></div>
+      </article>
+      <article class="project sub p3">
+        <div class="kicker">06 · 데이터베이스설계</div>
+        <h3 style="font-size:20px;font-weight:900;margin:6px 0 4px">UOS25</h3>
+        <p class="sub" style="font-size:13px">편의점 본사와 지점의 판매·재고·발주·인사를 하나로 관리하는 시스템</p>
+        <div class="scale" style="padding:8px 12px;margin:10px 0;font-size:12.5px"><span><b>기간</b>2024.03 – 06 · 3명</span><span><b>역할</b>DB 설계</span></div>
+        <ul class="did" style="font-size:13px">
+          <li>요구사항에서 엔티티 14개를 도출해 DB 설계</li>
+          <li>ERD·용어사전·CRUD 매트릭스 등 설계 문서 9종 작성</li>
+          <li>인사·고객 도메인 구현</li>
+        </ul>
+        <div class="stack" style="margin-top:10px"><span>Oracle</span><span>Spring Boot</span><span>JPA</span></div>
+      </article>
+      <article class="project sub p4">
+        <div class="kicker">07 · SSAFY AI 챌린지</div>
+        <h3 style="font-size:20px;font-weight:900;margin:6px 0 4px">재활용품 VQA</h3>
+        <p class="sub" style="font-size:13px">재활용품 이미지에 대한 객관식 질문에 답하는 AI 모델 경진대회</p>
+        <div class="scale" style="padding:8px 12px;margin:10px 0;font-size:12.5px"><span><b>기간</b>2026.04 · 5명</span><span><b>역할</b>모델 파인튜닝</span></div>
+        <ul class="did" style="font-size:13px">
+          <li>InternVL3-8B 모델 선택부터 파인튜닝·추론까지 담당</li>
+          <li>학습이 안 되던 원인을 찾아 정답 부분만 학습하도록 수정</li>
+          <li>3개 모델 앙상블로 반 1등</li>
+        </ul>
+        <div class="stack" style="margin-top:10px"><span>PyTorch</span><span>Transformers</span><span>QLoRA</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CAREER ───────── -->
+<section class="block" id="career">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>경력</h2></div>
+    <div class="card career">
+      <div class="meta"><b>하늘빛에프엔에스</b><span>경영지원부 · 사원</span><span class="d">2024.12.01 – 2025.07.31 · 8개월</span><span style="margin-top:8px">신생 온라인 유통사 · 사내 유일 IT 인력</span></div>
+            <ul class="did">
+        <li>파이썬 스크립트로 주문·송장 등 반복 업무 자동화</li>
+        <li>셀러툴·텔톡·이지어드민 등 솔루션 도입 및 전사 교육</li>
+        <li>이미지 위주 매뉴얼 제작, 1:1 교육으로 시스템 정착</li>
+        <li>출고·재고·CS 실무</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── AWARDS ───────── -->
+<section class="block" id="awards">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>수상 · 자격 · 어학</h2><p>시간 역순</p></div>
+    <div class="two">
+      <table>
+        <thead><tr><th>일자</th><th>수상</th><th>수여</th></tr></thead>
+        <tbody>
+          <tr><td class="d">2026.10.02</td><td><strong>특화 프로젝트 우수상</strong> · Antenna</td><td>삼성청년SW·AI아카데미</td></tr>
+          <tr><td class="d">2026.08.10</td><td><strong>공통 프로젝트 우수상</strong> · MoToK</td><td>삼성청년SW·AI아카데미</td></tr>
+          <tr><td class="d">2026.07.06</td><td><strong>빅데이터 활용 경진대회 시각화부문 우수상</strong> · 서울특별시장상</td><td>서울특별시</td></tr>
+          <tr><td class="d">2026.06.26</td><td><strong>1학기 프로젝트 최우수상</strong> · 홈셜록</td><td>삼성청년SW·AI아카데미</td></tr>
+          <tr><td class="d">2026.06.26</td><td><strong>1학기 성적우수상</strong></td><td>삼성청년SW·AI아카데미</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>일자</th><th>자격 · 어학</th><th>발급</th></tr></thead>
+        <tbody>
+          <tr><td class="d">2026.08.14</td><td><strong>OPIc</strong> IH</td><td>ACTFL</td></tr>
+          <tr><td class="d">2026.06.05</td><td><strong>한국사능력검정시험</strong> 2급</td><td>국사편찬위원회</td></tr>
+          <tr><td class="d">2025.09.05</td><td><strong>ADsP</strong></td><td>한국데이터산업진흥원</td></tr>
+          <tr><td class="d">2025.06.13</td><td><strong>정보처리기사</strong></td><td>한국산업인력공단</td></tr>
+          <tr><td class="d">2024.12.13</td><td><strong>SQLD</strong></td><td>한국데이터산업진흥원</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 김성령</div>
+</footer>
+</body>
+</html>
